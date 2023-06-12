@@ -1,9 +1,9 @@
 # TODO
 ## Step 1
-- [ ]   Create HTML for cuisine dropdown
-- [ ]   Create HTML for category dropdown
-- [ ]   Create option tags for cuisine dropdown and append
-- [ ]   Create option tags for category dropdown and append
+- [x]   Create HTML for cuisine dropdown
+- [x]   Create HTML for category dropdown
+- [x]   Create option tags for cuisine dropdown and append
+- [x]   Create option tags for category dropdown and append
 - [ ]   Create event listener for cuisine dropdown
 - [ ]   Create event listener for category dropdown
   
@@ -27,7 +27,7 @@
 
 # Project Requirements:
 
-- [ ]   Your app must be an HTML/CSS/JS frontend that accesses data from a public API or from your own API built using json-server and a db.json file.
+- [x]   Your app must be an HTML/CSS/JS frontend that accesses data from a public API or from your own API built using json-server and a db.json file.
 - [ ]   Your API or db.json should return a collection of at least 5 objects with each object having at least 3 attributes.
 - [ ]   Single HTML file
 - [ ]   2 DISTINCT event listeners
