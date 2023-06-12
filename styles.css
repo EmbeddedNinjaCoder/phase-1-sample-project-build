@@ -12,3 +12,7 @@ html {
     padding: 10px;
     background-color: antiquewhite;
 }
+
+.card img {
+    width: 100%;
+}
