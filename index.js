@@ -10,8 +10,10 @@ getCategories()
 
 // Event Listeners
 cuisineSelect.addEventListener("change", getRecipesByCuisine)
-categorySelect.addEventListener("change", getRecipesByCategory)
+// categorySelect.addEventListener("change", getRecipesByCategory)
 
+
+// Dropdown Functions
 function getCuisines() {
     fetch("https://www.themealdb.com/api/json/v1/1/list.php?a=list")
     .then(r => r.json())
@@ -43,4 +45,23 @@ function renderCategoryOptions(categories) {
         option.textContent = category.strCategory
         categorySelect.append(option)
     });
+}
+
+// Recipe Collection Functions
+
+function getRecipesByCuisine(e) {
+    const cuisine = e.target.value
+
+    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${cuisine}`)
+      .then(r => r.json())
+      .then(recipes => renderAllRecipes(recipes.meals))
+      .catch(error => alert(error))
+}
+
+function renderAllRecipes(recipes) {
+    recipes.forEach(recipe => {
+        console.log(recipe)
+     })
+     cuisineSelect.value = ""
+     categorySelect.value = ""
 }
