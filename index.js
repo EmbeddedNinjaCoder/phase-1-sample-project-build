@@ -80,10 +80,9 @@ function renderRecipeCard(recipe) {
       strMealThumb: recipeImage,
    } = recipe
 
-   console.log(recipe)
    const cardDiv = document.createElement("div")
    cardDiv.classList.add("card")
-   // add event listener to card
+   cardDiv.addEventListener("click", e => getRecipeDetails(e, recipeId))
 
    const image = document.createElement("img")
    image.src = recipeImage
@@ -93,4 +92,11 @@ function renderRecipeCard(recipe) {
 
    cardDiv.append(image, title)
    recipeContainer.append(cardDiv)
+}
+
+function getRecipeDetails(e, recipeId) {
+   fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipeId}`)
+      .then(r => r.json())
+      .then(recipe => console.log(recipe.meals[0]))
+      .catch(error => alert(error))
 }
