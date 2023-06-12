@@ -3,14 +3,13 @@ const cuisineSelect = document.querySelector("#cuisines")
 const categorySelect = document.querySelector("#categories")
 const recipeContainer = document.querySelector(".recipe-container")
 
-
 // Function Calls
 getCuisines()
 getCategories()
 
 // Event Listeners
 cuisineSelect.addEventListener("change", getRecipesByCuisine)
-// categorySelect.addEventListener("change", getRecipesByCategory)
+categorySelect.addEventListener("change", getRecipesByCategory)
 
 // Dropdown Functions
 function getCuisines() {
@@ -56,8 +55,17 @@ function getRecipesByCuisine(e) {
       .catch(error => alert(error))
 }
 
+function getRecipesByCategory(e) {
+   const category = e.target.value
+
+   fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`)
+      .then(r => r.json())
+      .then(recipes => renderAllRecipes(recipes.meals))
+      .catch(error => alert(error))
+}
+
 function renderAllRecipes(recipes) {
-    recipeContainer.replaceChildren()
+   recipeContainer.replaceChildren()
    recipes.forEach(recipe => {
       renderRecipeCard(recipe)
    })
