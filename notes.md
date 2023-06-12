@@ -4,12 +4,12 @@
 - [x]   Create HTML for category dropdown
 - [x]   Create option tags for cuisine dropdown and append
 - [x]   Create option tags for category dropdown and append
-- [ ]   Create event listener for cuisine dropdown
-- [ ]   Create event listener for category dropdown
+- [x]   Create event listener for cuisine dropdown
+- [x]   Create event listener for category dropdown
   
 ## Step 2
-- [ ]   Renders temporary cards for retrieved recipes
-- [ ]   Adds event listener on card click to retrieve recipe details
+- [x]   Renders temporary cards for retrieved recipes
+- [x]   Adds event listener on card click to retrieve recipe details
 
 ## Step 3
 - [ ]   Renders temporary recipe detail card

@@ -66,6 +66,7 @@ function getRecipesByCategory(e) {
 
 function renderAllRecipes(recipes) {
    recipeContainer.replaceChildren()
+   
    recipes.forEach(recipe => {
       renderRecipeCard(recipe)
    })
