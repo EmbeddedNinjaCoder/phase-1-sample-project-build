@@ -1,3 +1,21 @@
+// Welcome section
+function showWelcome() {
+    recipeDetailsContainer.style.display = "none"
+    recipeContainer.style.display = "none"
+    welcomeSection.style.display = "grid"
+    featuredRecipeDiv.replaceChildren()
+    featuredRecipeDiv.textContent = "Featured Recipe"
+    selectionH1.textContent = ""
+    getFeaturedRecipe()
+ }
+ 
+ function getFeaturedRecipe() {
+    fetch("https://www.themealdb.com/api/json/v1/1/random.php")
+       .then(r => r.json())
+       .then(recipe => renderRecipeCard(recipe.meals[0], true))
+       .catch(error => alert(error))
+ }
+
 // Dropdown Functions
 function getCuisines() {
     fetch("https://www.themealdb.com/api/json/v1/1/list.php?a=list")

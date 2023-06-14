@@ -6,14 +6,14 @@ const selectionH1 = document.querySelector(".selection-heading")
 const recipeDetailsContainer = document.querySelector(
    ".recipe-details-container"
 )
-// const recipeDetailsSection = document.querySelector(".recipe-details-section")
-// const welcomeSection = document.querySelector(".welcome")
-// const featuredRecipeDiv = document.querySelector(".featured")
+const recipeDetailsSection = document.querySelector(".recipe-details-section")
+const welcomeSection = document.querySelector(".welcome")
+const featuredRecipeDiv = document.querySelector(".featured")
 // const mainTitle = document.querySelector(".main-title")
 // const ingredientSearch = document.querySelector("#ingredient-search")
 
 // Function Calls
-// showWelcome()
+showWelcome()
 getCuisines()
 getCategories()
 
@@ -23,38 +23,6 @@ categorySelect.addEventListener("change", getRecipesByCategory)
 // mainTitle.addEventListener("click", showWelcome)
 // ingredientSearch.addEventListener("search", getRecipesByIngredient)
 
-// // Dropdown Functions
-// function getCuisines() {
-//    fetch("https://www.themealdb.com/api/json/v1/1/list.php?a=list")
-//       .then(r => r.json())
-//       .then(cuisines => renderCuisineOptions(cuisines.meals))
-//       .catch(error => alert(error))
-// }
-
-// function getCategories() {
-//    fetch("https://www.themealdb.com/api/json/v1/1/list.php?c=list")
-//       .then(r => r.json())
-//       .then(categories => renderCategoryOptions(categories.meals))
-//       .catch(error => alert(error))
-// }
-
-// function renderCuisineOptions(cuisines) {
-//    cuisines.forEach(cuisine => {
-//       const option = document.createElement("option")
-//       option.value = cuisine.strArea
-//       option.textContent = cuisine.strArea
-//       cuisineSelect.append(option)
-//    })
-// }
-
-// function renderCategoryOptions(categories) {
-//    categories.forEach(category => {
-//       const option = document.createElement("option")
-//       option.value = category.strCategory
-//       option.textContent = category.strCategory
-//       categorySelect.append(option)
-//    })
-// }
 
 // Recipe Collection Functions
 
@@ -77,9 +45,9 @@ function getRecipesByCategory(e) {
 }
 
 function renderAllRecipes(recipes) {
-   // welcomeSection.style.display = "none"
-   // recipeDetailsContainer.style.display = "none"
-   // recipeContainer.style.display = "grid"
+   welcomeSection.style.display = "none"
+   recipeDetailsContainer.style.display = "none"
+   recipeContainer.style.display = "grid"
    recipeContainer.replaceChildren()
 
    selectionH1.textContent = cuisineSelect.value || categorySelect.value
@@ -91,7 +59,7 @@ function renderAllRecipes(recipes) {
    categorySelect.value = ""
 }
 
-function renderRecipeCard(recipe) {
+function renderRecipeCard(recipe, featured = false) {
    const {
       idMeal: recipeId,
       strMeal: recipeName,
@@ -112,7 +80,13 @@ function renderRecipeCard(recipe) {
 
    recipeTitleDiv.append(title)
    cardDiv.append(image, recipeTitleDiv)
-   recipeContainer.append(cardDiv)
+
+   if (featured) {
+      featuredRecipeDiv.append(cardDiv)
+   } else {
+      recipeContainer.append(cardDiv)
+   }
+   // recipeContainer.append(cardDiv)
 }
 
 function getRecipeDetails(e, recipeId) {
@@ -123,10 +97,10 @@ function getRecipeDetails(e, recipeId) {
 }
 
 function renderRecipeDetails(recipeDetails) {
-   // welcomeSection.style.display = "none"
-   // recipeDetailsContainer.style.display = "grid"
+   welcomeSection.style.display = "none"
+   recipeDetailsContainer.style.display = "grid"
    recipeContainer.replaceChildren()
-   // selectionH1.textContent = ""
+   selectionH1.textContent = ""
 
    const {
       strMeal: recipe,
