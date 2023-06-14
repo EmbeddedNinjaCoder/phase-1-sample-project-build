@@ -29,7 +29,7 @@
 
 - [x]   Your app must be an HTML/CSS/JS frontend that accesses data from a public API or from your own API built using json-server and a db.json file.
 - [x]   Your API or db.json should return a collection of at least 5 objects with each object having at least 3 attributes.
-- [ ]   Single HTML file
+- [x]   Single HTML file
 - [x]   2 DISTINCT event listeners
 - [x]   One instance of array iteration using available array methods(map, forEach, filter, etc.)
 - [x]   Each event listener must have its own callback function using .addEventListener
@@ -40,8 +40,8 @@
 
 ## MVP
 As a user, I will be able to:
-- [ ]   View recipes by area (cuisine) or category (dietary)
-- [ ]   Get the details of a recipe by clicking on it
+- [x]   View recipes by area (cuisine) or category (dietary)
+- [x]   Get the details of a recipe by clicking on it
 
 ## Strech Goals
 - [ ]   View recipes by main ingredient (form or search input)
