@@ -2,7 +2,7 @@
 const cuisineSelect = document.querySelector("#cuisines")
 const categorySelect = document.querySelector("#categories")
 const recipeContainer = document.querySelector(".recipe-container")
-// const selectionH1 = document.querySelector(".selection-heading")
+const selectionH1 = document.querySelector(".selection-heading")
 const recipeDetailsContainer = document.querySelector(
    ".recipe-details-container"
 )
@@ -23,38 +23,38 @@ categorySelect.addEventListener("change", getRecipesByCategory)
 // mainTitle.addEventListener("click", showWelcome)
 // ingredientSearch.addEventListener("search", getRecipesByIngredient)
 
-// Dropdown Functions
-function getCuisines() {
-   fetch("https://www.themealdb.com/api/json/v1/1/list.php?a=list")
-      .then(r => r.json())
-      .then(cuisines => renderCuisineOptions(cuisines.meals))
-      .catch(error => alert(error))
-}
+// // Dropdown Functions
+// function getCuisines() {
+//    fetch("https://www.themealdb.com/api/json/v1/1/list.php?a=list")
+//       .then(r => r.json())
+//       .then(cuisines => renderCuisineOptions(cuisines.meals))
+//       .catch(error => alert(error))
+// }
 
-function getCategories() {
-   fetch("https://www.themealdb.com/api/json/v1/1/list.php?c=list")
-      .then(r => r.json())
-      .then(categories => renderCategoryOptions(categories.meals))
-      .catch(error => alert(error))
-}
+// function getCategories() {
+//    fetch("https://www.themealdb.com/api/json/v1/1/list.php?c=list")
+//       .then(r => r.json())
+//       .then(categories => renderCategoryOptions(categories.meals))
+//       .catch(error => alert(error))
+// }
 
-function renderCuisineOptions(cuisines) {
-   cuisines.forEach(cuisine => {
-      const option = document.createElement("option")
-      option.value = cuisine.strArea
-      option.textContent = cuisine.strArea
-      cuisineSelect.append(option)
-   })
-}
+// function renderCuisineOptions(cuisines) {
+//    cuisines.forEach(cuisine => {
+//       const option = document.createElement("option")
+//       option.value = cuisine.strArea
+//       option.textContent = cuisine.strArea
+//       cuisineSelect.append(option)
+//    })
+// }
 
-function renderCategoryOptions(categories) {
-   categories.forEach(category => {
-      const option = document.createElement("option")
-      option.value = category.strCategory
-      option.textContent = category.strCategory
-      categorySelect.append(option)
-   })
-}
+// function renderCategoryOptions(categories) {
+//    categories.forEach(category => {
+//       const option = document.createElement("option")
+//       option.value = category.strCategory
+//       option.textContent = category.strCategory
+//       categorySelect.append(option)
+//    })
+// }
 
 // Recipe Collection Functions
 
@@ -82,7 +82,7 @@ function renderAllRecipes(recipes) {
    // recipeContainer.style.display = "grid"
    recipeContainer.replaceChildren()
 
-   // selectionH1.textContent = cuisineSelect.value || categorySelect.value
+   selectionH1.textContent = cuisineSelect.value || categorySelect.value
 
    recipes.forEach(recipe => {
       renderRecipeCard(recipe)
@@ -105,10 +105,13 @@ function renderRecipeCard(recipe) {
    const image = document.createElement("img")
    image.src = recipeImage
 
+   const recipeTitleDiv = document.createElement("div")
+   recipeTitleDiv.classList.add("recipe-title")
    const title = document.createElement("h3")
    title.textContent = recipeName
 
-   cardDiv.append(image, title)
+   recipeTitleDiv.append(title)
+   cardDiv.append(image, recipeTitleDiv)
    recipeContainer.append(cardDiv)
 }
 
