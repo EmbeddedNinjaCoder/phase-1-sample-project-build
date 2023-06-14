@@ -115,14 +115,14 @@ function renderRecipeCard(recipe) {
 function getRecipeDetails(e, recipeId) {
    fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipeId}`)
       .then(r => r.json())
-      .then(recipe => console.log(recipe.meals[0]))
+      .then(recipe => renderRecipeDetails(recipe.meals[0]))
       .catch(error => alert(error))
 }
 
 function renderRecipeDetails(recipeDetails) {
    // welcomeSection.style.display = "none"
    // recipeDetailsContainer.style.display = "grid"
-   // recipeContainer.replaceChildren()
+   recipeContainer.replaceChildren()
    // selectionH1.textContent = ""
 
    const {
@@ -134,7 +134,7 @@ function renderRecipeDetails(recipeDetails) {
       strYoutube: youTubeLink,
    } = recipeDetails
 
-   // Title Area
+   //Title Area
    const title = document.createElement("p")
    title.textContent = recipe
    let titleArea = document.querySelector(".recipe-details-title")
@@ -158,31 +158,31 @@ function renderRecipeDetails(recipeDetails) {
       return ingredientP
    })
 
+   const ingredientsArea = document.querySelector(".recipe-details-ingredients")
    const ingredientsTitle = document.createElement("h3")
    ingredientsTitle.textContent = "Ingredients"
    ingredientsTitle.style.textDecoration = "underline"
-   const ingredientsArea = document.querySelector(".recipe-details-ingredients")
    ingredientsArea.replaceChildren()
    ingredientsArea.append(ingredientsTitle, ...ingredientPs)
 
    // Directions Area
+   const directionsArea = document.querySelector(".recipe-details-directions")
    const directionsTitle = document.createElement("h3")
    directionsTitle.textContent = "Directions"
    directionsTitle.style.textDecoration = "underline"
-   const directionsArea = document.querySelector(".recipe-details-directions")
    const directionsP = document.createElement("p")
    directionsArea.replaceChildren()
    directionsP.textContent = directions
    directionsArea.append(directionsTitle, directionsP)
 
    // Resource Area
+   const resourcesArea = document.querySelector(".recipe-details-resources")
    const youTubeLinkATag = document.createElement("a")
    youTubeLinkATag.href = youTubeLink
    youTubeLinkATag.target = "_blank"
    youTubeLinkATag.text = `How to make ${recipe} on YouTube.`
    const cuisineCategory = document.createElement("p")
    cuisineCategory.textContent = `(Cuisine: ${cuisine}, Category: ${category})`
-   const resourcesArea = document.querySelector(".recipe-details-resources")
    resourcesArea.replaceChildren()
    resourcesArea.append(youTubeLinkATag, cuisineCategory)
 }
@@ -201,6 +201,5 @@ function parseIngredients(recipe) {
       let ingredientString = measure.trim() + " " + ingredient.trim()
       ingredientArray.push(ingredientString)
    }
-
    return ingredientArray
 }
